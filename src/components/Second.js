@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-
+import { useState, useEffect } from 'react';
+import axios from "axios";
 import {
     withStyles,
     makeStyles,
@@ -8,7 +9,6 @@ import {
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { useHistory } from "react-router-dom";
-import axios from "axios";
 
 
 
@@ -44,57 +44,50 @@ const ValidationTextField = withStyles({
     },
 })(TextField);
 
-
-export default function First() {
+export default function Second  (){
     let history = useHistory();
-   
-    function code(e) {
-        localStorage.setItem("code", e.target.value); 
+    var id;
+
+
+    function idChange(e) {
+        id=e.target.value;
     }
-
     function next() {
+        localStorage.setItem("id",id);
         var data={
-            code:localStorage.getItem("code")
+            id:id,
+            code:localStorage.getItem('code')
         }
-        axios.post('http://localhost:4200/allcodes', data).then(res => {
+        axios.post('http://localhost:4200/id', data).then(res => {
             
-            if (res.data == "true") {
-                axios.post('http://localhost:4200/code', data).then(res2 => {
-            
-                    if (res2.data == '1') {
-                        alert(" ")
-                    }
-        
-                }).catch(err => console.log(err));
-                history.push('/id')
+            if (res.data == '1') {
+                alert(" You already voted , You can not vote again")
             }
-            else{
-                alert("Invalid code");
+
+            if(res.data=='0'){
+                history.push('/vote')
 
             }
-            
 
         }).catch(err => console.log(err));
-
+        
         
     }
     const classes = useStyles();
-
     return (
         <div>
             <div className="container" >
                 <div style={{ margin: "5%" }}>
-                    <img src="https://lh6.googleusercontent.com/proxy/tBez1BBW-AL4nQg4-FRjWsymPmE-Uryf52zNfbW6ndi4QkdudLeJUiEFhKZAPm5O0_dTSS6Uhksc9ak" />
-
+                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/cf/Aadhaar_Logo.svg/1200px-Aadhaar_Logo.svg.png" style={{width:"20%"}}></img>
                 </div>
                 <div>
                     <ValidationTextField
                         className={classes.margin}
-                        label="Enter code"
+                        label="Enter your Aadhaar number"
                         required
                         variant="outlined"
                         id="validation-outlined-input"
-                        onChange={code}
+                        onChange={idChange}
                     /><br /><br />
                     <Button
                         variant="contained"
@@ -102,16 +95,8 @@ export default function First() {
                         className={classes.button}
                         onClick={next}
                     >
-                        Done
-                        </Button>
-
-                </div>
-
-                <div >
-                    <hr style={{ width: "20%",marginTop:"2%",marginBottom:"2%" }} />
-                    <a href="/create" style={{textDecoration:"none"}}>
-                        <Button variant="outlined" color="primary">Create your own poll</Button>
-                    </a>
+                        Continue
+                    </Button>
 
                 </div>
             </div>
@@ -119,6 +104,4 @@ export default function First() {
     )
 }
 
-
-// export default First
 

@@ -28,12 +28,15 @@ class App extends Component {
 
   componentDidMount() {
     try {
+      var data={
+        code:localStorage.getItem("code"),
+      }
       const copy= JSON.parse(JSON.stringify(this.state.options))
       const copy2= JSON.parse(JSON.stringify(this.state.series))
       var r1= [];
       var r2=[];
       setInterval(() => {
-        Axios.get("http://localhost:4200/allusers").then(response => {
+        Axios.post("http://localhost:4200/allusers",data).then(response => {
           var x=response.data
           for (var i = 0; i < x.length; i++) {
             var myArray = [];
@@ -45,7 +48,7 @@ class App extends Component {
 
           r1=myArray;
           copy.xaxis.categories=r1;
-          Axios.get("http://localhost:4200/allvotes").then(response2 => {
+          Axios.post("http://localhost:4200/allvotes",data).then(response2 => {
 
             var y=response2.data
             for (var i = 0; i < y.length; i++) {
