@@ -9,7 +9,6 @@ import Second from './components/Second'
 function App() {
   return (
     <div className="App">
-
       <Router>
       <Route path='/create' component={Register} />
       <Route path='/compare' component={ApexChart} />
