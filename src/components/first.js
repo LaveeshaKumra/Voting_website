@@ -61,10 +61,6 @@ export default function First() {
             if (res.data == "true") {
                 axios.post('http://localhost:4200/code', data).then(res2 => {
             
-                    if (res2.data == '1') {
-                        alert(" ")
-                    }
-        
                 }).catch(err => console.log(err));
                 history.push('/id')
             }
@@ -87,7 +83,7 @@ export default function First() {
         <div>
             <div className="container" >
                 <div style={{ margin: "5%" }}>
-                    <img src="https://lh6.googleusercontent.com/proxy/tBez1BBW-AL4nQg4-FRjWsymPmE-Uryf52zNfbW6ndi4QkdudLeJUiEFhKZAPm5O0_dTSS6Uhksc9ak" style={{width: "fit-content",marginTop: "10%",marginBottom: "10%"}} />
+                    <img src="https://lh6.googleusercontent.com/proxy/tBez1BBW-AL4nQg4-FRjWsymPmE-Uryf52zNfbW6ndi4QkdudLeJUiEFhKZAPm5O0_dTSS6Uhksc9ak" style={{width: "fit-content",marginTop: "5%",marginBottom: "5%"}} />
 
                 </div>
                 <div>
