@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import Chart from "react-apexcharts";
 import Axios from "axios";
+import { useHistory } from "react-router-dom";
 
 class App extends Component {
+
   constructor(props) {
     super(props);
-
+    
     this.state = {
       options: {
         chart: {
@@ -27,7 +29,9 @@ class App extends Component {
 
 
   componentDidMount() {
+
     try {
+      setInterval(() => {
       var data={
         code:localStorage.getItem("code"),
       }
@@ -35,12 +39,14 @@ class App extends Component {
       const copy2= JSON.parse(JSON.stringify(this.state.series))
       var r1= [];
       var r2=[];
-      setInterval(() => {
+      
         Axios.post("http://localhost:4200/allusers",data).then(response => {
           var x=response.data
+         
           for (var i = 0; i < x.length; i++) {
             var myArray = [];
             for (var key in x) {
+              
                  myArray.push(x[key].name)
             }
         }
@@ -57,21 +63,28 @@ class App extends Component {
                    myArray2.push(y[key].votes)
               }
           }
+          
             r2=myArray2
             copy2[0].data=r2;
+            if(r1==undefined || r2==undefined){
+              alert("Choose voting code first");
+              window.location.href = "http://localhost:3000/f";
+            }
+            else{
             this.setState(
               {
                 options:copy,
                 series:copy2
               }
             )
-            //console.log(this.state)
+            }
           })
         }).catch();
       }, 1000);
     } catch (e) {
       console.log(e);
     }
+  
   }
 
 

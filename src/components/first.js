@@ -78,6 +78,9 @@ export default function First() {
 
         
     }
+    function checkk(){
+        window.location.href = "http://localhost:3000/compare";
+    }
     const classes = useStyles();
 
     return (
@@ -102,7 +105,16 @@ export default function First() {
                         className={classes.button}
                         onClick={next}
                     >
-                        Done
+                        Vote 
+                        </Button>
+                        <br/><br/>
+                        <Button
+                        variant="contained"
+                        color="primary"
+                        className={classes.button}
+                        onClick={checkk}
+                    >
+                        Check Results 
                         </Button>
 
                 </div>
