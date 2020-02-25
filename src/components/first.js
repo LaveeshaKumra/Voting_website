@@ -79,7 +79,7 @@ export default function First() {
         
     }
     function checkk(){
-        window.location.href = "http://localhost:3000/compare";
+        window.location.href = "./compare";
     }
     const classes = useStyles();
 
@@ -87,7 +87,7 @@ export default function First() {
         <div>
             <div className="container" >
                 <div style={{ margin: "5%" }}>
-                    <img src="https://lh6.googleusercontent.com/proxy/tBez1BBW-AL4nQg4-FRjWsymPmE-Uryf52zNfbW6ndi4QkdudLeJUiEFhKZAPm5O0_dTSS6Uhksc9ak" />
+                    <img src="https://lh6.googleusercontent.com/proxy/tBez1BBW-AL4nQg4-FRjWsymPmE-Uryf52zNfbW6ndi4QkdudLeJUiEFhKZAPm5O0_dTSS6Uhksc9ak" style={{width: "fit-content",marginTop: "10%",marginBottom: "10%"}} />
 
                 </div>
                 <div>

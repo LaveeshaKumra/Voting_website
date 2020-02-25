@@ -68,7 +68,7 @@ class App extends Component {
             copy2[0].data=r2;
             if(r1==undefined || r2==undefined){
               alert("Choose voting code first");
-              window.location.href = "http://localhost:3000/f";
+              window.location.href = "./f";
             }
             else{
             this.setState(
