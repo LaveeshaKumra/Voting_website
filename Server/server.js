@@ -9,8 +9,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 var con = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '1234',
-    database: 'poll'
+    password: '****',
+    database: '****'
 });
 
 app.listen(4200, () => console.log(`Example app listening on port 4200!`));
